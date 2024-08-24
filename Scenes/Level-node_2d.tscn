@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg13jgao78sui"]
+
+[ext_resource type="Script" path="res://Scripts/Level-node_2d.gd" id="1_2tsfq"]
+[ext_resource type="PackedScene" uid="uid://vlfy3olnkv1e" path="res://Scenes/Platform-static_body_2d-.tscn" id="1_wv3t2"]
+[ext_resource type="PackedScene" uid="uid://dafkul4mbfnyt" path="res://Scenes/Player-character_body_2d.tscn" id="2_yjked"]
+[ext_resource type="PackedScene" uid="uid://dmr83ukuegs0r" path="res://Scenes/Collectable-static_body_2d.tscn" id="3_f8km6"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_2tsfq")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(-3256, -1816)
+
+[node name="Polygon2D" type="Polygon2D" parent="Ground"]
+position = Vector2(3319, 607)
+scale = Vector2(0.218989, 0.937064)
+polygon = PackedVector2Array(-291.363, 1911.96, 4969.17, 1911.96, 4969.17, 1980.26, -291.363, 1980.26)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground"]
+position = Vector2(3256, 2392)
+polygon = PackedVector2Array(0, 0, 544, 0, 1152, 0, 1152, 64, 544, 64, 0, 64)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("1_wv3t2")]
+position = Vector2(59.2, 424)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("1_wv3t2")]
+position = Vector2(827.2, 424)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("1_wv3t2")]
+position = Vector2(443.2, 296)
+
+[node name="CharacterBody2D" parent="." node_paths=PackedStringArray("uiLevel") instance=ExtResource("2_yjked")]
+position = Vector2(64, 128)
+uiLevel = NodePath("..")
+
+[node name="Collectable" parent="." instance=ExtResource("3_f8km6")]
+position = Vector2(160, 384)
+
+[node name="Collectable2" parent="." instance=ExtResource("3_f8km6")]
+position = Vector2(544, 256)
+
+[node name="Collectable3" parent="." instance=ExtResource("3_f8km6")]
+position = Vector2(928, 384)
